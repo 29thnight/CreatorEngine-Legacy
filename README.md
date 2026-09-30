@@ -6,6 +6,69 @@
 <img src="https://github.com/user-attachments/assets/052ee7f2-f02f-4c9f-9eb3-43673b9c4fe2" alt="Creator Engine" height="150">
 </h1>
 
+## 프로젝트 보존 안내
+
+이 저장소는 게임인재원 졸업작품 **Kori The Spritail** 제작에 사용된 CreatorEngine의 **레거시 보존본**입니다.
+
+졸업작품 개발 버전을 기반으로 하며, 프로젝트 종료 이후 일부 수정이 포함되어 있어 **졸업작품 제출 당시의 코드와 완전히 동일하지는 않습니다.** 당시의 구현에 가까운 코드와 공동 개발 기록을 보존하고 참조할 수 있도록, 이후의 리팩토링 및 신규 개발과 분리하여 별도 저장소로 유지합니다.
+
+현재 진행 중인 엔진 리팩토링과 신규 개발은 **[29thnight/CreatorEngine](https://github.com/29thnight/CreatorEngine)** 저장소에서 이어집니다. 이 저장소에서는 새로운 기능 개발이나 구조 리팩토링을 진행하지 않으며, 기여 내역 확인과 안내 정리 후 **읽기 전용 아카이브로 전환할 예정**입니다.
+
+## 공동 개발 참여자 및 주요 기여
+
+아래는 프로젝트 당시의 역할과 보존된 커밋 이력에서 확인한 주요 작업을 함께 정리한 것입니다. **세부·추가 작업에는 다른 팀원이 작성한 코드의 수정·확장·연동도 포함되며, 해당 시스템 전체를 한 사람이 단독 구현했다는 뜻은 아닙니다.**
+
+| 참여자 | 프로젝트 역할 | 주요 담당 | 커밋 이력에서 확인한 세부·추가 작업 |
+| --- | --- | --- | --- |
+| [29thnight](https://github.com/29thnight) | 엔진 개발자 | 엔진 구조 설계 및 구현, 렌더러 API 작성 | ImGui 에디터·씬 편집, 모델 에셋 로딩, 리플렉션·YAML 직렬화, C++ DLL 스크립트 핫로드, 코루틴 관리 |
+| [joker1092](https://github.com/joker1092) | 프로그래밍 팀장 · 물리 개발자 | 물리 구조 구현, BT 구조 구현, 지형 렌더링·물리 구조 구현 | AI 블랙보드·FSM 기반 구조, BT 시각화·편집 UI, Sweep/Overlap 물리 쿼리, 보스 패턴의 애니메이션·이펙트 연동 |
+| [zmalqp123](https://github.com/zmalqp123) | 그래픽스 개발자 | 렌더 후처리 추가 구현, 셰이더 구현 및 확장 | SSGI·PBR 개선, 데칼·물 셰이더·수면 SSR, Tween, 몬스터 스포너, 아시스 행동 및 물리 충돌 처리 보완 |
+| [SongSeHwan](https://github.com/SongSeHwan) | 게임 로직 메인 개발자 | 입력 시스템 작성, 애니메이션 이벤트·FSM 구조 구현, 게임 로직 개발 | 게임패드 진동 개선, 검기 발사체, 플레이 데이터·CSV 연동, 씬별 BGM 제어, 보스 사망·클리어 이벤트 |
+| [matstar33](https://github.com/matstar33) | 이펙트 시스템 개발자 | 이펙트 시스템 구현 | 파티클 모듈 및 메시·빌보드 렌더 모듈 확장, 이펙트별 셰이더·렌더 상태 설정, 스프라이트 애니메이션 개선, 크기·일시정지 제어, 전투 이펙트·프리팹 |
+
+> **기여 기록의 범위**: 담당 영역은 프로젝트 참여자의 설명을 기준으로 하고, 세부·추가 작업은 작성자별 커밋 로그와 대표 변경 내용을 참고해 보강했습니다. 전체 작업을 빠짐없이 나열한 목록은 아니며, 커밋 메시지만으로 식별하기 어려운 공동 작업이나 누락된 항목이 있을 수 있습니다. 또한 보존본에는 후속 수정이 포함되므로, 모든 항목이 졸업작품 제출 시점에 동일한 상태였다는 의미는 아닙니다. 누락·오기가 있다면 아래의 기존 참여자 안내에 따라 정정을 요청해 주세요.
+
+<details>
+<summary><strong>기여 내역 확인에 참고한 대표 커밋</strong></summary>
+
+아래 링크는 각 항목의 작업 기록을 확인하기 위한 대표 사례입니다. 커밋 수나 변경량으로 기여도를 순위화하지 않으며, 수정·확장 기록을 해당 시스템의 최초 구현 기록으로 간주하지 않습니다.
+
+### 29thnight — 엔진·에디터 기반
+
+- 에디터·씬 계층/검사기 및 콜백 유틸리티: [씬 편집·Delegate 관련 작업](https://github.com/29thnight/CreatorEngine-Legacy/commit/32450ad0147de364492397a1252843abf99a2fcb)
+- 콘텐츠 로딩·직렬화: [모델 에셋 로딩](https://github.com/29thnight/CreatorEngine-Legacy/commit/10c8e7e82a55f49f1ac8ef8c7d844db45445ccff), [메타데이터·YAML 직렬화](https://github.com/29thnight/CreatorEngine-Legacy/commit/110512289ca4af6472ec2890e5d888d5e13add81)
+- 스크립트 실행 기반: [HotLoadSystem 및 Dynamic_CPP 도입](https://github.com/29thnight/CreatorEngine-Legacy/commit/a4b7b573e8c37dee18c3ec5a377f811bca19dce1), [MSBuild 빌드·로그 연동 개선](https://github.com/29thnight/CreatorEngine-Legacy/commit/bd739168af23b9a2ff1692c92518d447bebf1af6)
+- 런타임 유틸리티: [코루틴 관리 기능](https://github.com/29thnight/CreatorEngine-Legacy/commit/e00d8d7353e8bb279f283f5bd808019572bbcd21)
+
+### joker1092 — 물리·AI·지형
+
+- AI 기반 구조: [FSM·Blackboard 프레임워크](https://github.com/29thnight/CreatorEngine-Legacy/commit/22e507cb151f1bdad94da1b41178284acd1d0439), [BT 시각화·편집 UI 관련 작업](https://github.com/29thnight/CreatorEngine-Legacy/commit/4dfd208b7742d6f631f12263900900026ba14c60)
+- 물리 쿼리·편집 정보: [Box/Sphere/Capsule Sweep·Overlap](https://github.com/29thnight/CreatorEngine-Legacy/commit/faf1fef59741f6bf45dbe05ed704fe2a249a2a8a), [콜라이더 속성 정보](https://github.com/29thnight/CreatorEngine-Legacy/commit/03ed51d5a878479add7333b4fb4e72ae7c222b71)
+- 지형 및 게임 연동: [지형 추가·제거 처리 수정](https://github.com/29thnight/CreatorEngine-Legacy/commit/e41c4b9677dce88b053d8b9548ebf49105fa9d06), [보스 패턴·애니메이션 연동](https://github.com/29thnight/CreatorEngine-Legacy/commit/5edafc092848faecc767fb351fbcaedcc27fddaf), [보스 이펙트 연동](https://github.com/29thnight/CreatorEngine-Legacy/commit/c907753b55cac1763869852a3e4edcaf4ac9d8f9)
+
+### zmalqp123 — 그래픽스·게임 연동
+
+- 렌더링·셰이더: [PBR·SSGI 필터링 개선](https://github.com/29thnight/CreatorEngine-Legacy/commit/ac3432814d1aa3d9ee4895da4aabeee0b9dcee61), [데칼 추가·SSGI 수정](https://github.com/29thnight/CreatorEngine-Legacy/commit/f99305efb38eab01fcf4cf034c5b3e0ee518f1ba), [물 셰이더](https://github.com/29thnight/CreatorEngine-Legacy/commit/97ced5871ed2075d7bceb569066547b9ce7cd668), [수면 SSR·오브젝트 그라데이션](https://github.com/29thnight/CreatorEngine-Legacy/commit/10e97b2480f3d3789bcbc21765effd18698f8a80)
+- 보간 및 연출 기반: [TweenManager 도입](https://github.com/29thnight/CreatorEngine-Legacy/commit/4e56edfb17119ee694c8f51b50e61369e9345f0f), [Tween·그림자·지형 렌더링 보완](https://github.com/29thnight/CreatorEngine-Legacy/commit/35acf60278ca7ac76a63e5c42c1bfe3908f2bd3a)
+- 게임 로직 연동: [몬스터 스포너·프리팹](https://github.com/29thnight/CreatorEngine-Legacy/commit/8beed8fa2d1538531b00c19be14d72119bc24b4f), [아시스의 몬스터 회피·콜라이더 변경](https://github.com/29thnight/CreatorEngine-Legacy/commit/75cb6803b1de3d5d618bee77579430bf4c958ba7)
+- 물리 연동 보완: [캐릭터 컨트롤러 간 충돌 검사](https://github.com/29thnight/CreatorEngine-Legacy/commit/afd492d49e68d925ee4bf6f2e8eb81c8a7ba6379), [트리거 충돌 매트릭스 처리](https://github.com/29thnight/CreatorEngine-Legacy/commit/e132e7347dcdcb5ecb27ae5c6b3afe0d86ea0c6b)
+
+### SongSeHwan — 입력·애니메이션·게임 로직
+
+- 입력 및 전투: [게임패드 진동 개선·검기 발사체 추가](https://github.com/29thnight/CreatorEngine-Legacy/commit/1c45de30e9f6d365dbf2bac4de9abba37966ab2d)
+- 플레이 데이터·사운드: [PlayData·SoundName 추가 및 CSVLoader 수정](https://github.com/29thnight/CreatorEngine-Legacy/commit/89a91c2f502c9b535849776b0057c32db4cf543f), [씬별 BGMController](https://github.com/29thnight/CreatorEngine-Legacy/commit/ad6439752a952d2f2f3271dd248fe48b0cda40d6)
+- 게임 진행 및 연출: [TimeScale·보스 사망·클리어 이벤트](https://github.com/29thnight/CreatorEngine-Legacy/commit/94621fcab3e319bdf2fdf0b86fe0f7c6a18db3cb), [애니메이션 잡 참조 방식·피격 이펙트 연동 수정](https://github.com/29thnight/CreatorEngine-Legacy/commit/55561a5cf22ee40d23ee0b66ea7555a7dc308f77)
+
+### matstar33 — 이펙트 시스템·콘텐츠
+
+- 파티클 모듈: [생성·이동·색상 모듈 관련 작업](https://github.com/29thnight/CreatorEngine-Legacy/commit/c63855796f77d08745e967b54a4202fec5e6e56b), [이펙트 크기 제어·메시 파티클 리팩토링](https://github.com/29thnight/CreatorEngine-Legacy/commit/8293bec5c58c70830ae23c6473dca84b846bf235), [일시정지 기능](https://github.com/29thnight/CreatorEngine-Legacy/commit/3fb83e398a3d651ad91d10d4238334cadb4bee5c)
+- 렌더 모듈 확장: [이펙트별 셰이더·렌더 상태 설정 및 스프라이트 애니메이션 개선](https://github.com/29thnight/CreatorEngine-Legacy/commit/9cd5aed089b8f63bbbed1d8e77423f901f0afc8e)
+- 게임용 이펙트·프리팹: [회복 이펙트](https://github.com/29thnight/CreatorEngine-Legacy/commit/c46fbe3f5ec40789d42a5ec4a839e6a6faeb4ad1), [차징 근거리 공격 이펙트](https://github.com/29thnight/CreatorEngine-Legacy/commit/462ad5011f071bda0770a56628a28e440920fa89), [무기 교체 이펙트·프리팹](https://github.com/29thnight/CreatorEngine-Legacy/commit/25ced4b61a9eeada4bf6993d5777bcc30d788543)
+
+</details>
+
+---
+
 플랫폼 : Windows
 
 주요 API : WinAPI, DX11
@@ -74,4 +137,15 @@ CreatorEngine은 Windows 기반 DX11 렌더링 파이프라인과 C++20 모듈�
 CreatorEngine은 복수의 Visual Studio 프로젝트로 분리되어 있으며, 렌더링(`RenderEngine`), 물리(`Physics`), 스크립트 바인더(`ScriptBinder`), 공용 유틸리티(`Utility_Framework`) 등이 각각 DLL/정적 라이브러리로 빌드됩니다. 엔진 부트스트랩(`EngineEntry`)은 이러한 모듈을 초기화하고, 렌더 루프·사운드 업데이트·스크립트 재빌드 트리거 등 주요 시스템을 조율합니다.
 
 ---
-이 문서는 CreatorEngine의 핵심 기술 스택과 외부 라이브러리 사용 현황을 요약하여, 신규 기여자와 협업자가 엔진 구조를 빠르게 이해할 수 있도록 돕습니다.
+
+이 문서의 기술 설명은 보존된 레거시 버전의 구조와 외부 라이브러리 사용 현황을 이해하기 위한 참고 자료입니다. 현재 개발 중인 CreatorEngine의 구조나 지원 범위와는 구분하여 읽어 주세요.
+
+## 기존 참여자 안내 — 아카이브 전환 예정
+
+기존에 안내한 레거시 저장소 분리에 이어, **졸업작품 관련 코드와 공동 개발 기록을 보존하기 위해 이 저장소를 읽기 전용 아카이브로 전환할 예정**입니다. 이후의 엔진 리팩토링과 신규 개발은 [CreatorEngine](https://github.com/29thnight/CreatorEngine) 저장소에서 진행합니다.
+
+아카이브는 저장소를 삭제하거나 팀원들의 작업을 비공개로 전환하는 조치가 아닙니다. 공개 열람과 포크는 계속 가능하지만, 아카이브 이후에는 이 저장소에 직접 커밋하거나 이슈·PR을 새로 작성하는 등의 변경 작업을 할 수 없습니다. 자세한 동작은 [GitHub의 저장소 아카이브 안내](https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories)를 참고해 주세요.
+
+**담당 영역이나 기여 내역에 누락·오기가 있거나, 포트폴리오에서 참조할 코드·설명에 정정할 내용이 있다면 아카이브 전에 기존 협업 연락 채널을 통해 29thnight에게 알려 주세요.** 관련 파일이나 커밋을 함께 전달해 주시면 확인 후 기록에 반영하겠습니다. 아카이브 이후에 발견한 기록상의 정정 사항도 기존 연락 채널로 전달해 주세요.
+
+이 안내는 공동 작업의 기록을 이후의 개발과 구분하여 보존하기 위한 것이며, 기여 표에 적히지 않은 작업이나 다른 참여자의 기여를 배제하려는 목적이 아닙니다.
